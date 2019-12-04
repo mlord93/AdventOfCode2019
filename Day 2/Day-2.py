@@ -4,6 +4,8 @@ import math
 
 unchanged_input = list(map(int, fileinput.input('./Day-2-Input.txt')[0].split(',')))
 
+
+# Part 1
 def get_program_output(noun, verb):
     program_array = unchanged_input.copy()
     program_array[1] = noun
@@ -19,12 +21,10 @@ def get_program_output(noun, verb):
             print(f'Error: Opcode {program_array[i]} does not exist')
         i += 4
     return program_array[0]
-
-# Part 1
 print(f'Part 1: {get_program_output(12, 2)}')
 
 # Part 2
-for (i, j) in itertools.product(range(100), repeat=2):
-    if get_program_output(i, j) == 19690720:
-        print(f'Part 2: {100 * i + j}')
+for (noun, verb) in itertools.product(range(100), repeat=2):
+    if get_program_output(noun, verb) == 19690720:
+        print(f'Part 2: {100 * noun + verb}')
         break
