@@ -21,10 +21,9 @@ def build_wire_path(instructions):
                 wire_path[current_point] = step_count_from_origin
     return wire_path
 
-[wire_1, wire_2] = fileinput.input('./Day-3-Input.txt')
-wire_1_path = build_wire_path(wire_1)
-wire_2_path = build_wire_path(wire_2)
-intersection_set = set(wire_1_path.keys()) & set(wire_2_path.keys())
+
+[wire_1, wire_2] = map(build_wire_path, fileinput.input('./Day-3-Input.txt'))
+intersection_set = set(wire_1.keys()) & set(wire_2.keys())
 
 # Part 1
 intersection_distances = []
@@ -35,5 +34,6 @@ print(f'Part 1: {min(intersection_distances)}')
 # Part 2
 intersection_step_distances = []
 for coordinate in intersection_set:
-    intersection_step_distances.append(wire_1_path[coordinate] + wire_2_path[coordinate])
+    intersection_step_distances.append(
+        wire_1[coordinate] + wire_2[coordinate])
 print(f'Part 2: {min(intersection_step_distances)}')
