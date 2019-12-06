@@ -12,7 +12,6 @@ def get_program_output(program_input, program_array):
         if output != 0:
             return f'ERROR: UNEXPECTED OUTPUT {output}'
         op_code = program_array[i] % 100
-        print(f'opcode: {op_code}')
 
         if op_code == 1:
             parameters, parameter_modes = get_parameters(program_array, i, 3)
